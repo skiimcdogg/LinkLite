@@ -22,25 +22,25 @@ environ.Env.read_env()
 BASE_DIR = Path(__file__).resolve().parent.parent
 env_file = os.path.join(BASE_DIR, '.env')
 
-# Lire le fichier .env
 if os.path.isfile(env_file):
     print(".env file found")
     environ.Env.read_env(env_file)
 else:
-    print(f"No .env file found at {env_file}") # [ ] Comment for prd
+    print(f"No .env file found at {env_file}")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ubo&bcc%bhx5zs@kqx45owwjxmutmv!2uc@nb6bcmbe7di6+x-'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True # [ ] False pour la prod
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ["http://localhost:3001", "localhost:8000", "localhost", "127.0.0.1"] # [ ]  Mettre les url autorisée pour la prd !!!
+ALLOWED_HOSTS = ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
-FRONTEND_URL = "http://localhost:3001"
+FRONTEND_URL = env('FRONTEND_URL')
+BACKEND_URL = env('BACKEND_URL')
 
 # Application definition
 
@@ -111,7 +111,7 @@ REST_FRAMEWORK = {
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3001",  # [ ] changer PORT pour le front
+    env('FRONTEND_URL'),
 ]
 
 CORS_ALLOW_HEADERS = [
@@ -121,7 +121,7 @@ CORS_ALLOW_HEADERS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3001",
+    env('FRONTEND_URL'),
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -129,7 +129,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'linklite.noreply@gmail.com'
-EMAIL_HOST_PASSWORD = env('EMAIL_PASSWORD') # [ ] RETIRER AVANT PROD
+EMAIL_HOST_PASSWORD = env('EMAIL_PASSWORD')
 DEFAULT_FROM_EMAIL = 'linklite.noreply@gmail.com'
 
 ROOT_URLCONF = 'link_lite.urls'
@@ -159,11 +159,11 @@ WSGI_APPLICATION = 'link_lite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'link-reducer',
-        'USER': 'antoine',
-        'PASSWORD': 'stouff',
-        'HOST': 'localhost',      
-        'PORT': '5433',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': 'db',      
+        'PORT': env('DB_PORT'),
     }
 }
 

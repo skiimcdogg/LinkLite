@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.conf import settings
 from ...models import URL
 from django.contrib.auth.models import User
 
@@ -14,7 +15,7 @@ class UrlRepository:
         url_object = URL.objects.filter(original_url=original_url, user__id=user.id).first()
         if url_object:
             return JsonResponse({
-                "result": f"http://localhost:8000/{url_object.short_url}",
+                "result": f"{settings.BACKEND_URL}/{url_object.short_url}",
                 "details": "Url already exists"
             }, status=409)
         return URL.objects.create(original_url=original_url, short_url=short_code, user=user)

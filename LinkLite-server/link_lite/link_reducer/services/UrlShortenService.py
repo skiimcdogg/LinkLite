@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.conf import settings
 from ..data.repositories.UrlRepository import UrlRepository
 from ..utils.generate_short_code import generate_short_code
 from rest_framework.permissions import IsAuthenticated
@@ -19,4 +20,4 @@ class UrlShortenService:
         if isinstance(url, JsonResponse):
             return url
         
-        return f"http://localhost:8000/{short_code}" # [ ] Remplacer par l'url env de l'app
+        return f"{settings.BACKEND_URL}/{short_code}"

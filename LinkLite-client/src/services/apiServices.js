@@ -22,7 +22,7 @@ const getCookie = (name) => {
 
 const getCsrfToken = async () => {
     try {
-        await axios.get('http://localhost:8000/csrf-token/', { 
+        await axios.get(`${process.env.REACT_APP_BACKEND_URL}/csrf-token/`, { 
             withCredentials: true, 
         });        
         const csrfToken = getCookie("csrftoken")

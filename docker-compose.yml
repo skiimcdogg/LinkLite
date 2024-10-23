@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./LinkLite-server
+    env_file:
+      - ./LinkLite-server/link_lite/.env
+    expose:
+      - "8000:8000"
+    command: >
+      dockerize -wait tcp://db:5432 -timeout 30s \
+      sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    networks:
+      - linklite_network
+    depends_on:
+      - db
+  
+  frontend:
+    build:
+      context: ./LinkLite-client
+    env_file:
+      - ./LinkLite-client/.env
+    ports:
+      - "3001:80"  
+    networks:
+      - linklite_network 
+    depends_on:
+      - backend
+  
+  db:
+    image: postgres:16-alpine
+    env_file:
+      - ./LinkLite-server/link_lite/.env
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - linklite_network 
+
+networks:
+  linklite_network:
+    driver: bridge
+
+volumes:
+  db_data:
