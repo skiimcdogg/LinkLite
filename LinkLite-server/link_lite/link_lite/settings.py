@@ -19,12 +19,12 @@ env = environ.Env()
 environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-env_file = os.path.join(BASE_DIR, '.env')
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+env_file = os.path.join(BASE_DIR, 'link_lite/.env')
 
 if os.path.isfile(env_file):
-    print(".env file found")
-    environ.Env.read_env(env_file)
+    print(".env files found")
+    env.read_env(env_file)
 else:
     print(f"No .env file found at {env_file}")
 
@@ -35,9 +35,9 @@ else:
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = True
 
-ALLOWED_HOSTS = ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+ALLOWED_HOSTS = ["http://backend:8000", "http://frontend:3001", "127.0.0.1", "0.0.0.0", "localhost", "http://localhost:3001", "http://localhost:8000", "backend", "frontend"]
 
 FRONTEND_URL = env('FRONTEND_URL')
 BACKEND_URL = env('BACKEND_URL')
@@ -111,7 +111,8 @@ REST_FRAMEWORK = {
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    env('FRONTEND_URL'),
+    'http://localhost:3001',  # Adresse du frontend
+    'http://frontend:3001',   # Nom du service Docker
 ]
 
 CORS_ALLOW_HEADERS = [
@@ -121,7 +122,8 @@ CORS_ALLOW_HEADERS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    env('FRONTEND_URL'),
+    'http://localhost:3001',
+    'http://frontend:3001',
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -159,11 +161,11 @@ WSGI_APPLICATION = 'link_lite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
+        'NAME': env('POSTGRES_DB'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
         'HOST': 'db',      
-        'PORT': env('DB_PORT'),
+        'PORT': env('POSTGRES_PORT'),
     }
 }
 

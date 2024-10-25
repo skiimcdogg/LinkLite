@@ -25,8 +25,11 @@ function About() {
           Token-based authentication and email verification
         </li>
         <li>
-        <span className="underline decoration-double">Frontend</span>: React
+        <span className="underline decoration-double">Frontend</span>: React,
           Tailwindcss
+        </li>
+        <li>
+        <span className="underline decoration-double">Deployment</span>: The application is deployed using Docker Compose, with an Nginx image serving the frontend, hosted on Gandi.
         </li>
       </ul>
       <p className="text-sm mb-5">
