@@ -37,11 +37,11 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["http://backend:8000", "http://frontend:3001", "127.0.0.1", "0.0.0.0", "localhost", "http://localhost:3001", "http://localhost:8000", "backend", "frontend"]
 
 FRONTEND_URL = env('FRONTEND_URL')
 BACKEND_URL = env('BACKEND_URL')
 
+ALLOWED_HOSTS = ["http://backend:8000", "http://frontend:3001", "127.0.0.1", "0.0.0.0", "localhost", "http://localhost:3001", "http://localhost:8000", "backend", "frontend", BACKEND_URL]
 # Application definition
 
 INSTALLED_APPS = [
