@@ -40,6 +40,7 @@ services:
     depends_on:
       - backend
       - frontend
+    entrypoint: ["/bin/sh", "-c", "/wait_for_backend.sh"]
 
   certbot:
     image: certbot/certbot
