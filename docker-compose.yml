@@ -26,7 +26,9 @@ services:
     command: ["echo", "Frontend built. Nginx will serve the assets."]
   
   nginx:
-    image: nginx
+    build: 
+      context: .
+      dockerfile: Dockerfile.nginx
     ports:
       - "80:80"    # HTTP
       - "443:443"  # HTTPS
@@ -35,12 +37,13 @@ services:
       - ./data/certbot/conf:/etc/letsencrypt  # Certificats générés par Certbot
       - ./data/certbot/www:/var/www/certbot  # Emplacement pour les challenges Certbot
       - ./LinkLite-client/build:/usr/share/nginx/html  # Fichiers buildés du frontend
+      - ./wait_for_backend.sh:/wait_for_backend.sh
     networks:
       - linklite_network
     depends_on:
       - backend
       - frontend
-    entrypoint: ["/bin/sh", "-c", "/wait_for_backend.sh"]
+    entrypoint: ["/bin/sh", "-c", "chmod +x /wait_for_backend.sh && /wait_for_backend.sh"]
 
   certbot:
     image: certbot/certbot
