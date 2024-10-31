@@ -15,7 +15,7 @@ services:
       - linklite_network
     depends_on:
       - db
-  
+
   frontend:
     build:
       context: ./LinkLite-client
@@ -24,32 +24,23 @@ services:
     networks:
       - linklite_network
     command: ["echo", "Frontend built. Nginx will serve the assets."]
-  
+
   nginx:
-    build: 
-      context: .
-      dockerfile: Dockerfile.nginx
+    image: nginx
     ports:
       - "80:80"    # HTTP
       - "443:443"  # HTTPS
     volumes:
-      - ./nginx_temp.conf:/etc/nginx/nginx.conf  # Configuration Nginx
+      - ./nginx.conf:/etc/nginx/nginx.conf  # Fichier principal de Nginx
+      - ./conf.d:/etc/nginx/conf.d  # Configuration du serveur
       - ./data/certbot/conf:/etc/letsencrypt  # Certificats générés par Certbot
       - ./data/certbot/www:/var/www/certbot  # Emplacement pour les challenges Certbot
       - ./LinkLite-client/build:/usr/share/nginx/html  # Fichiers buildés du frontend
-      - ./wait_for_backend.sh:/wait_for_backend.sh  # Script pour vérifier le backend
     networks:
       - linklite_network
     depends_on:
       - backend
       - frontend
-    entrypoint: >
-      /bin/sh -c "
-      if [ -f /etc/letsencrypt/live/link-lite.antoinestouff.fr/fullchain.pem ]; then
-          cp /etc/nginx/nginx.conf.ssl /etc/nginx/nginx.conf &&
-          nginx -s reload;
-      fi && nginx -g 'daemon off;'
-      "
 
   certbot:
     image: certbot/certbot
