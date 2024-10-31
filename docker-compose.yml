@@ -15,11 +15,6 @@ services:
       - linklite_network
     depends_on:
       - db
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
   
   frontend:
     build:
@@ -42,12 +37,11 @@ services:
       - ./data/certbot/conf:/etc/letsencrypt  # Certificats générés par Certbot
       - ./data/certbot/www:/var/www/certbot  # Emplacement pour les challenges Certbot
       - ./LinkLite-client/build:/usr/share/nginx/html  # Fichiers buildés du frontend
-      - ./wait_for_backend.sh:/wait_for_backend.sh
+      - ./wait_for_backend.sh:/wait_for_backend.sh  # Script pour vérifier le backend
     networks:
       - linklite_network
     depends_on:
-      - backend:
-        condition: service_healthy
+      - backend
       - frontend
     entrypoint: ["/bin/sh", "-c", "chmod +x /wait_for_backend.sh && /wait_for_backend.sh"]
 
@@ -57,6 +51,8 @@ services:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     entrypoint: /bin/sh -c 'trap exit TERM; while :; do certbot certonly --webroot -w /var/www/certbot -d link-lite.antoinestouff.fr --email antoine.stouff78500@gmail.com --agree-tos --noninteractive; sleep 12h; done'
+    depends_on:
+      - nginx
     networks:
       - linklite_network
 
