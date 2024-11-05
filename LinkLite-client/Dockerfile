@@ -10,4 +10,4 @@ COPY . .
 
 RUN npm run build
 
-CMD ["echo", "Build complete. Frontend assets are ready in /app/build for the Nginx proxy."]
+CMD ["cp", "-r", "/app/build", "/app/build/"]
