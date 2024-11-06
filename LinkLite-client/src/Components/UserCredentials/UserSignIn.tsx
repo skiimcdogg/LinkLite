@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import authApiHandler from '../../services/authApiHandler';
 import { useUser } from "../../context/UserContext";
+import "./userSignIn.css"
 
 type signInFormState = {
   email: string,
@@ -40,8 +41,8 @@ function UserSignIn() {
 
   
   return (
-    <div className="flex flex-col items-center justify-center top-0 left-0 right-0 bottom-0 pt-16 mx-auto my-auto max-w-lg max-h-screen">
-      <h1 className='mb-6 text-xl'>Let's connect</h1>
+    <div className="signin__container">
+      <h1 className='signin__title'>Let's connect</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Email:</label>
@@ -71,7 +72,7 @@ function UserSignIn() {
         className='btn-custom'
         >Connect</button>
       </form>
-      <p>No account yet ? Create an account here: <Link to={"/signup"} className="hover:text-retroRed">Register</Link></p>
+      <p>No account yet ? Create an account here: <Link to={"/signup"} className="signin__register">Register</Link></p>
     </div>
   );
 };

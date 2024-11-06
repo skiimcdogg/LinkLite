@@ -1,0 +1,21 @@
+.signup__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-top: 4rem;
+    margin: auto;
+    max-width: 32rem;
+    max-height: 100vh;
+  }
+  
+  .signup__title {
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }

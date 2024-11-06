@@ -1,7 +1,9 @@
+import "UserCheckEmail.css"
+
 function UserCheckEmail() {
   return (
-    <div className="flex items-center justify-center absolute inset-0">
-      <h1 className="text-3xl">Check your Emails !</h1> 
+    <div className="check-email__container">
+      <h1 className="check-email__title">Check your Emails !</h1> 
     </div>
   );
 };

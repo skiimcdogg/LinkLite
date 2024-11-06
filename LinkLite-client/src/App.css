@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lobster+Two:wght@700&family=Roboto+Slab&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
   /* Pour Chrome et Safari */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -37,18 +32,48 @@
   select:focus:-webkit-autofill {
     box-shadow: 0 0 5px #2e31ff !important;
   }
-}
 
 .App {
   text-align: center;
 }
 
+:root {
+  --retro-blue: #2e31ff;
+  --retro-beige: #F2E5BF;
+  --retro-orange: #FD8B51;
+  --retro-red: #CB6040;
+  --retro-red-light: #de8266;
+  --dark-background: #1A1A1D;
+  --header-background: #16162b;
+  --sidebar-background: #041705;
+  --font-text-retro: "Roboto Slab", cursive;
+  --font-title-app-retro: "Lobster Two", cursive;
+  --font-sidebar-retro: "Bebas Neue", cursive;
+}
+
 body {
-  @apply bg-retroBlue text-retroBeige font-textRetro;
+  background-color: var(--retro-blue);
+  color: var(--retro-beige);
+  font-family: var(--font-text-retro);
 }
 
 .btn-custom {
-  @apply my-6 w-auto bg-retroOrange hover:bg-retroRed text-retroBeige border-retroBlue border-opacity-50 font-bold py-2 px-4 rounded-lg shadow-lg transform transition duration-300 hover:scale-105;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: auto;
+  background-color: var(--retro-orange);
+  color: var(--retro-beige);
+  border: 1px solid var(--retro-blue);
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.btn-custom:hover {
+  background-color: var(--retro-red);
+  transform: scale(1.05);
 }
 
 .input-custom {
@@ -75,4 +100,35 @@ body {
   text-sm
   hover:bg-retroOrange     
   hover:border-retroRed;   
+}
+
+.input-custom {
+  width: 100%;
+  max-width: 28rem;
+  background-color: var(--retro-beige); /* utilise la variable de couleur */
+  color: var(--retro-blue); /* utilise la variable de couleur */
+  border: 1px solid var(--retro-blue); /* utilise la variable de couleur */
+  border-radius: 0.25rem; /* pour arrondir les bords */
+  padding: 0.25rem 0.75rem; /* padding horizontal et vertical */
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem; /* taille de police 14px pour .text-sm */
+  line-height: 1.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  transition: color 0.3s, background-color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.input-custom::placeholder {
+  color: var(--retro-blue); /* Placeholder color */
+}
+
+.input-custom:hover {
+  background-color: var(--retro-orange); /* Color for hover state */
+  border-color: var(--retro-red); /* Border color for hover */
+}
+
+.input-custom:focus {
+  outline: none; /* Removes default focus outline */
+  border-color: transparent; /* Removes border color for focus */
+  box-shadow: 0 0 0 2px var(--retro-blue); /* Adds blue ring */
 }

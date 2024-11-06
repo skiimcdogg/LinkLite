@@ -4,6 +4,7 @@ import { UserUrl } from '../../type';
 import apiHandler from '../../services/apiHandler';
 import UserListUrls from './UserListUrls';
 import { ReactComponent as LoadingIcon } from '../../images/green-spinner.svg';
+import "./UserPage.css";
 
 type UserUrlsListState = {
   urls: UserUrl[]
@@ -43,7 +44,7 @@ function UserPage() {
   }
   if(loading || urlsLoading) {
     return (
-     <div className="flex items-center justify-center">
+     <div className="user-page__loading-spinner">
       <LoadingIcon />
      </div>
     )
@@ -55,8 +56,8 @@ function UserPage() {
 
   return (
     <div>
-      <h1 className='mt-7'>Welcome, {user.username.charAt(0).toUpperCase() + user.username.slice(1)}</h1>
-      <p className='mb-7'>{user.email}</p>
+      <h1 className='user-page__title'>Welcome, {user.username.charAt(0).toUpperCase() + user.username.slice(1)}</h1>
+      <p className='user-page__email'>{user.email}</p>
       {
         userUrls?.urls?.length === 0 ? <p>No Urls yet to display</p> :
         <UserListUrls urls={userUrls?.urls || []} handleDeleteUrl={handleDeleteUrl} />

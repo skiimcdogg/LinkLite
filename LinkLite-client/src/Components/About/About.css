@@ -1,0 +1,37 @@
+.about__container {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    padding-bottom: 1.25rem;
+  }
+  
+  .about__title {
+    text-decoration: underline double;
+    margin-bottom: 2.5rem;
+  }
+  
+  .about__text {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .about__sub-title {
+    margin-bottom: 1.25rem;
+  }
+  
+  .about__list {
+    list-style-type: disc;
+    list-style-position: inside;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .about__span {
+    text-decoration: underline double;
+  }
+  
+  .about__link:hover {
+    color: var(--neon-blue);
+  }
+  

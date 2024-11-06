@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
+import "./Sidebar.css"
 
 type SidebarProps = {
   isSidebarOpen: boolean;
@@ -9,34 +10,34 @@ function Sidebar({ isSidebarOpen }: SidebarProps) {
   const { user } = useUser();
   return (
     <div
-      className={`z-10 fixed top-16 left-0 h-full transition-transform duration-300 ${
-        isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+      className={`sidebar__container ${
+        isSidebarOpen ? "sidebar__container--closed" : "sidebar__container--open"
       }`}
     >
-      <div className="bg-retroRed w-64 pt-16 shadow-xl h-full">
-        <div className="mb-1">
-          <Link to={"/"} className="block font-SidebarRetro text-4xl hover:text-retroBlue pl-4 py-2">
+      <div className="sidebar__links">
+        <div className="sidebar__link-container">
+          <Link to={"/"} className="sidebar__link-home">
             Home
           </Link>
         </div>
-        <div className="mb-1">
+        <div className="sidebar__link-container">
           {user ? (
             <Link
               to={"/my-page"}
-              className="block font-SidebarRetro text-2xl hover:text-retroBlue pl-4 py-2"
+              className="sidebar__link"
             >
               My Page
             </Link>
           ) : (
             <Link
               to={"/login"}
-              className="block font-SidebarRetro text-2xl hover:text-retroBlue pl-4 py-2"
+              className="sidebar__link"
             >
               My Page
             </Link>
           )}
         </div>
-        <Link to={"/about"} className="block font-SidebarRetro text-2xl hover:text-retroBlue pl-4 py-2">
+        <Link to={"/about"} className="sidebar__link">
           About
         </Link>
       </div>

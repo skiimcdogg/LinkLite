@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams  } from 'react-router-dom';
 import axios from 'axios';
 import authApiHandler from '../../services/authApiHandler';
+import "./UserEmailVerification.css"
 
 
 function UserEmailVerification() {
@@ -39,7 +40,7 @@ function UserEmailVerification() {
   }, [token, navigate]);
   return (
     <div>
-      <h1>UserEmailVerification</h1>
+      <h1 className='verification__title'>Email Verification:</h1>
       { status ? <p style={{ color: 'green' }}>{status}</p> :
       <p style={{ color: 'red' }}>{error}</p> }
     </div>

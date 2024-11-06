@@ -1,0 +1,47 @@
+.header__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--retro-red);
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    z-index: 50;
+  }
+  
+  .header__btn--is-toggled {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    outline: none;
+  }
+  
+  .header__arrow {
+    transform: translate(0, 0);
+    transition: transform 0.3s;
+  }
+  
+  .header__arrow--open {
+    transform: rotate(180deg);
+  }
+  
+  .header__arrow--closed {
+    transform: rotate(0);
+  }
+  
+  .header__title {
+    font-family: var(--font-title-app-retro);
+    font-size: 3rem;
+  }
+  
+  .header__btn--logs {
+    font-size: 1.25rem;
+  }
+  
+  .header__btn--logs:hover {
+    color: var(--retro-blue);
+  }
+  

@@ -1,0 +1,12 @@
+.check-email__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+  }
+  
+  .check-email__title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }

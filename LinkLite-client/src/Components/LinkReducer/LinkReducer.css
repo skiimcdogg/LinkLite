@@ -1,0 +1,22 @@
+.reducer__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+    max-width: 42rem;
+  }
+  
+  .reducer__text {
+    margin-bottom: 1.25rem;
+  }
+  
+  .reducer__sub-text {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }

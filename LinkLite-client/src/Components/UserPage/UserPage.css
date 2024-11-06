@@ -1,0 +1,13 @@
+.user-page__title {
+    margin-top: 1.75rem
+}
+
+.user-page__email {
+    margin-bottom: 1.75rem
+}
+
+.user-page__loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

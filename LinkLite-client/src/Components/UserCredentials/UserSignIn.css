@@ -1,0 +1,25 @@
+.signin__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-top: 4rem;
+    margin: auto;
+    max-width: 32rem; /* lg */
+    max-height: 100vh;
+  }
+  
+  .signin__title {
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem; /* xl */
+    line-height: 1.75rem;
+  }
+  
+  .signin__register:hover {
+    color: var(--retro-red);
+  }

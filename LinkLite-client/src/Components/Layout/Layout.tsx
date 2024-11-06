@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import Header from "../Header/Header";
 import useToggleSidebar from "../../hooks/useToggleSidebar";
+import "Layout.css";
 
 
 function Layout({ children }: {children: React.ReactNode}) {
@@ -17,13 +18,13 @@ function Layout({ children }: {children: React.ReactNode}) {
           <>
           <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
           {/* Barre grise collée sous le header */}
-          <div className="bg-gray-400 h-24 fixed top-0 left-0 right-0"></div> {/* Barre grise de 2 unités de hauteur */}
+          <div className="layout__grey-bar"></div>
       </>
         )}
-        <div className="flex h-screen">
+        <div className="layout__container">
           { showHeaderAndSidebar && <Sidebar isSidebarOpen={isSidebarOpen} /> }
           <div
-          className={`flex-1 transition-all duration-300 pt-4 mt-20 ${isSidebarOpen ? 'ml-64' : 'ml-0'}`}
+          className={`layout__container--is-expanded ${isSidebarOpen ? 'layout__container--expanded' : 'layout__container--hidden'}`}
           >
             {children}
           </div>

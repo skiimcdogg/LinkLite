@@ -1,0 +1,30 @@
+.layout__grey-bar {
+    background-color: #9CA3AF; /* Gray-400 */
+    height: 6rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .layout__container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .layout__container--is-expanded {
+    flex: 1 1 0%;
+    transition: all 0.3s;
+    padding-top: 1rem;
+    margin-top: 5rem;
+  }
+  
+  .layout__container--expanded {
+    margin-left: 16rem;
+  }
+  
+  .layout__container--hidden {
+    margin-left: 0;
+  }
+  
+
