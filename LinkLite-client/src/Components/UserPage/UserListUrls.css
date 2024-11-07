@@ -11,12 +11,12 @@
   
   .user-list__table {
     min-width: 100%;
-    background-color: #1a1a1d; /* gray-900 */
-    color: #39FF14; /* neonGreen */
+    background-color: #28282c; /* gray-900 */
+    color: var(--retro-beige); /* neonGreen */
   }
   
   .user-list__table-tr:nth-child(odd) {
-    background-color: #1f2937; /* gray-800 */
+    background-color: #374861c9; /* gray-800 */
   }
   
   .user-list__table-tr {

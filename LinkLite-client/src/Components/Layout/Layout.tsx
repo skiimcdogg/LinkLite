@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import Header from "../Header/Header";
 import useToggleSidebar from "../../hooks/useToggleSidebar";
-import "Layout.css";
+import "./Layout.css";
 
 
 function Layout({ children }: {children: React.ReactNode}) {

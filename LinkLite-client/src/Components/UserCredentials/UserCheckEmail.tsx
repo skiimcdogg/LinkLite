@@ -1,4 +1,4 @@
-import "UserCheckEmail.css"
+import "./UserCheckEmail.css"
 
 function UserCheckEmail() {
   return (
